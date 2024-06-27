@@ -1,18 +1,10 @@
+#!/usr/bin/python3
 """
 This module fetches and displays
 the TODOS list progress of an employee based on their ID.
 It uses the 'requests' module to interact with a REST API
 and the 'sys' module to handle
 command-line arguments. Additionally, it exports the data in CSV format.
-
-Usage:
-    python script.py <employee_id>
-
-Dependencies:
-    - requests: Install using 'pip install requests'
-
-Example:
-    $ python script.py 1
 """
 
 import csv
