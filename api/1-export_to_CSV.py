@@ -77,7 +77,10 @@ def export_tasks_to_csv(emp_id, employee_name, todos):
             ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
         for task in todos:
             writer.writerow(
-                [emp_id, employee_name, task.get('completed'), task.get('title')])
+                [emp_id,
+                 employee_name,
+                 task.get('completed'),
+                 task.get('title')])
 
     print(f"Data exported to {csv_filename}")
 
