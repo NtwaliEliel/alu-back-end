@@ -8,9 +8,9 @@ and the 'sys' module to handle command-line arguments.
 Additionally, it exports the data in CSV format.
 """
 
+import csv
 import requests
 import sys
-import csv
 
 
 def fetch_employee_data(emp_id):
@@ -45,11 +45,7 @@ def fetch_employee_data(emp_id):
 
 def display_employee_todo_progress(employee_name, todos):
     """
-    Displays the TODO list progress of the employee.
-
-    Args:
-        employee_name (str): The name of the employee.
-        todos (list): The list of todo tasks.
+    Displays the TODOS list progress of the employee.
     """
     total_tasks = len(todos)
     done_tasks = [task for task in todos if task.get('completed')]
@@ -64,11 +60,6 @@ def display_employee_todo_progress(employee_name, todos):
 def export_tasks_to_csv(emp_id, employee_name, todos):
     """
     Exports the employee's tasks to a CSV file.
-
-    Args:
-        emp_id (int): The ID of the employee.
-        employee_name (str): The name of the employee.
-        todos (list): The list of todo tasks.
     """
     csv_filename = f"{emp_id}.csv"
     with open(csv_filename, mode='w', newline='') as file:
