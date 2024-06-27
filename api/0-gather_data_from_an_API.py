@@ -1,11 +1,18 @@
 #!/usr/bin/python3
 
+"""
+this REST API, for a given employee ID, returns information about his/her todos list progress.
+"""
+
 import requests
 import sys
 
 
 def get_employee_todo_progress(employee_id):
-    # Define the base URL for the API
+    """
+    Defining get_employee_todo_progress function
+    """
+
     base_url = 'https://jsonplaceholder.typicode.com'
 
     # Fetch employee data
