@@ -81,13 +81,13 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        employee_id = int(sys.argv[1])
+        Employee_Id = int(sys.argv[1])
     except ValueError:
         print("Employee ID must be an integer.")
         sys.exit(1)
 
-    employee_Name, TODOS = fetch_employee_data(employee_id)
+    employee_Name, TODOS = fetch_employee_data(Employee_Id)
 
     if employee_Name and TODOS:
         display_employee_todo_progress(employee_Name, TODOS)
-        export_tasks_to_csv(employee_id, employee_Name, TODOS)
+        export_tasks_to_csv(Employee_Id, employee_Name, TODOS)
