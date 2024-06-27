@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
 """
-This module fetches and displays the TODOS list progress of an employee based on their ID.
-It uses the 'requests' module to interact with a REST API and the 'sys' module to handle 
-command-line arguments. Additionally, it exports the data in CSV format.
+This module fetches and displays the TODOS list
+progress of an employee based on their ID.
+It uses the 'requests' module to interact with a REST API
+and the 'sys' module to handle command-line arguments.
+Additionally, it exports the data in CSV format.
 """
 
 import requests
@@ -53,7 +55,8 @@ def display_employee_todo_progress(employee_name, todos):
     done_tasks = [task for task in todos if task.get('completed')]
     number_of_done_tasks = len(done_tasks)
 
-    print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
+    print(f"Employee {employee_name} "
+          f"is done with tasks({number_of_done_tasks}/{total_tasks}):")
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
@@ -70,9 +73,11 @@ def export_tasks_to_csv(emp_id, employee_name, todos):
     csv_filename = f"{emp_id}.csv"
     with open(csv_filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        writer.writerow(
+            ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
         for task in todos:
-            writer.writerow([emp_id, employee_name, task.get('completed'), task.get('title')])
+            writer.writerow(
+                [emp_id, employee_name, task.get('completed'), task.get('title')])
 
     print(f"Data exported to {csv_filename}")
 
