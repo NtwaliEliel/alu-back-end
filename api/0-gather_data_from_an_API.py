@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 
 """
-this REST API, for a given employee ID, returns information about his/her todos list progress.
+this REST API,
+for a given employee ID,
+returns information about his/her todos list progress.
 """
 
 import requests
