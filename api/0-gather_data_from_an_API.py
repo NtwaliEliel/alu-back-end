@@ -3,6 +3,7 @@
 import requests
 import sys
 
+
 def get_employee_todo_progress(employee_id):
     # Define the base URL for the API
     base_url = 'https://jsonplaceholder.typicode.com'
@@ -38,15 +39,16 @@ def get_employee_todo_progress(employee_id):
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
+        print('Usage: python script.py <employee_Id>')
         sys.exit(1)
 
     try:
-        employee_id = int(sys.argv[1])
+        Employee_ID = int(sys.argv[1])
     except ValueError:
         print("Employee ID must be an integer.")
         sys.exit(1)
 
-    get_employee_todo_progress(employee_id)
+    get_employee_todo_progress(Employee_ID)
