@@ -70,6 +70,7 @@ def export_tasks_to_csv(emp_id, employee_name, todos):
                  employee_name,
                  task.get('completed'),
                  task.get('title')])
+    return "OK"
 
 
 if __name__ == '__main__':
