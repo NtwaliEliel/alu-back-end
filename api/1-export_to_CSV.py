@@ -29,6 +29,7 @@ def get_employee_todo_progress(employee_id):
 
     employee = response_user.json()
     employee_name = employee.get('name')
+    username = employee.get('username')
 
     # Fetch todos data
     todos_url = f'{base_url}/todos?userId={employee_id}'
@@ -40,7 +41,7 @@ def get_employee_todo_progress(employee_id):
 
     todos = response_todos.json()
 
-    return employee_name, todos
+    return username, todos
 
 
 # def display_employee_todo_progress(employee_name, todos):
@@ -55,7 +56,7 @@ def get_employee_todo_progress(employee_id):
 #         print(f"\t {task.get('title')}")
 
 
-def export_tasks_to_csv(employee_id, employee_name, todos):
+def export_tasks_to_csv(employee_id, username, todos,):
     """
     Exports the employee's tasks to a CSV file.
     """
@@ -65,8 +66,7 @@ def export_tasks_to_csv(employee_id, employee_name, todos):
 
         for task in todos:
             writer.writerow(
-                [employee_id,
-                 employee_name,
+                [employee_id, username,
                  task.get('completed'),
                  task.get('title')])
 
