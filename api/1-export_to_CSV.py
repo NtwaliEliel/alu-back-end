@@ -56,6 +56,22 @@ def display_employee_todo_progress(employee_name, todos):
         print(f"\t {task.get('title')}")
 
 
+def export_tasks_to_csv(emp_id, employee_name, todos):
+    """
+    Exports the employee's tasks to a CSV file.
+    """
+    csv_filename = f"{emp_id}.csv"
+    with open(csv_filename, mode='w', newline='') as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+
+        for task in todos:
+            writer.writerow(
+                [emp_id,
+                 employee_name,
+                 task.get('completed'),
+                 task.get('title')])
+
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: python script.py <employee_id>")
@@ -70,5 +86,4 @@ if __name__ == '__main__':
     employee_Name, TODOS = fetch_employee_data(Employee_Id)
 
     if employee_Name and TODOS:
-        display_employee_todo_progress(employee_Name, TODOS)
-
+        export_tasks_to_csv(Employee_Id, employee_Name, TODOS)
