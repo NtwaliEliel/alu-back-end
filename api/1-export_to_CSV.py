@@ -90,8 +90,7 @@ if __name__ == '__main__':
         result = export_tasks_to_csv(Employee_Id, employee_Name, TODOS)
 
         if result == "OK":
-            print("Number of tasks in CSV: OK")
-            sys.exit(0)  # Exit with status code 0 indicating success
+            sys.exit("Number of tasks in CSV: OK")  # Exit with status code 0 indicating success
     else:
         print("Export failed.")
         sys.exit(1)  # Exit with status code 1 indicating failure
