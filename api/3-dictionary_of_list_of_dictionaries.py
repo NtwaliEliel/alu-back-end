@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-This script uses a REST API to fetch and display TODOS list progress for all employees,
+This script uses a REST API to fetch and display
+TODOS list progress for all employees,
 and exports the data in JSON format.
 """
 
