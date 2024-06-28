@@ -6,9 +6,9 @@ and display TODOS list progress for a given employee ID,
 and exports the data in JSON format.
 """
 
+import json
 import requests
 import sys
-import json
 
 
 def get_employee_todo_progress(employee_id):
@@ -51,7 +51,10 @@ def get_employee_todo_progress(employee_id):
 
     # Export tasks to JSON
     json_filename = f"{employee_id}.json"
-    tasks = [{"task": task.get('title'), "completed": task.get('completed'), "username": username} for task in todos]
+    tasks = [{"task": task.get('title'),
+              "completed": task.get('completed'),
+              "username": username}
+             for task in todos]
     data = {str(employee_id): tasks}
 
     try:
@@ -67,9 +70,9 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        employee_id = int(sys.argv[1])
+        Employee_ID = int(sys.argv[1])
     except ValueError:
         print("Employee ID must be an integer.")
         sys.exit(1)
 
-    get_employee_todo_progress(employee_id)
+    get_employee_todo_progress(Employee_ID)
