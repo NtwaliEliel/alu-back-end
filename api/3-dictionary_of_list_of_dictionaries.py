@@ -5,9 +5,9 @@ This script uses a REST API to fetch and display TODOS list progress for all emp
 and exports the data in JSON format.
 """
 
+import json
 import requests
 import sys
-import json
 
 
 def get_all_employees_todo_progress():
@@ -59,7 +59,6 @@ def get_all_employees_todo_progress():
     try:
         with open(json_filename, 'w') as file:
             json.dump(all_tasks, file, indent=4)
-        print(f"Data exported to {json_filename}")
     except Exception as e:
         print(f"Error exporting data to {json_filename}: {e}")
 
