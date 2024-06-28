@@ -73,8 +73,6 @@ def export_tasks_to_csv(emp_id, employee_name, todos):
                  task.get('completed'),
                  task.get('title')])
 
-            return "OK"
-
     print(f"Data exported to {csv_filename}")
 
 
