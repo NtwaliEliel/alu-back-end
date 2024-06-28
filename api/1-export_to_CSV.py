@@ -12,29 +12,30 @@ import requests
 import sys
 
 
-def fetch_employee_data(emp_id):
+def get_employee_todo_progress(employee_id):
     """
-    Fetches employee data and todos tasks for a given employee ID.
+    Defining get_employee_todo_progress function
     """
+
     base_url = 'https://jsonplaceholder.typicode.com'
 
     # Fetch employee data
-    user_url = f'{base_url}/users/{emp_id}'
+    user_url = f'{base_url}/users/{employee_id}'
     response_user = requests.get(user_url)
 
     if response_user.status_code != 200:
-        print(f"Error fetching user data for employee ID {emp_id}")
-        return None, None
+        print(f"Error fetching user data for employee ID {employee_id}")
+        return
 
     employee = response_user.json()
     employee_name = employee.get('name')
 
     # Fetch todos data
-    todos_url = f'{base_url}/todos?userId={emp_id}'
+    todos_url = f'{base_url}/todos?userId={employee_id}'
     response_todos = requests.get(todos_url)
 
     if response_todos.status_code != 200:
-        print(f"Error fetching todo data for employee ID {emp_id}")
+        print(f"Error fetching todo data for employee ID {employee_id}")
         return None, None
 
     todos = response_todos.json()
@@ -43,13 +44,11 @@ def fetch_employee_data(emp_id):
 
 
 def display_employee_todo_progress(employee_name, todos):
-    """
-    Displays the TODOS list progress of the employee.
-    """
     total_tasks = len(todos)
     done_tasks = [task for task in todos if task.get('completed')]
     number_of_done_tasks = len(done_tasks)
 
+    # Display results
     print(f"Employee {employee_name} "
           f"is done with tasks({number_of_done_tasks}/{total_tasks}):")
     for task in done_tasks:
@@ -70,21 +69,20 @@ def export_tasks_to_csv(emp_id, employee_name, todos):
                  employee_name,
                  task.get('completed'),
                  task.get('title')])
-    return "OK"
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
+        print('Usage: python script.py <employee_Id>')
         sys.exit(1)
 
     try:
-        Employee_Id = int(sys.argv[1])
+        Employee_ID = int(sys.argv[1])
     except ValueError:
         print("Employee ID must be an integer.")
         sys.exit(1)
 
-    employee_Name, TODOS = fetch_employee_data(Employee_Id)
+    employee_Name, TODOS = get_employee_todo_progress(Employee_ID)
 
     if employee_Name and TODOS:
-        result = export_tasks_to_csv(Employee_Id, employee_Name, TODOS)
+        export_tasks_to_csv(Employee_ID, employee_Name, TODOS)
