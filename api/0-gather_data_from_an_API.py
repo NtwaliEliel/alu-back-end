@@ -6,8 +6,8 @@ for a given employee ID,
 returns information about his/her todos list progress.
 """
 
-import requests
 import json
+import requests
 
 
 def get_employee_todo_progress(employee_id):
